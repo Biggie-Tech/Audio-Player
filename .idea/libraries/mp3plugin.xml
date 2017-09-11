@@ -1,0 +1,17 @@
+<component name="libraryTable">
+  <library name="mp3plugin">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libraries/mp3plugin.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libraries/jl1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libraries/xerces.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libraries/junit-3.8.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libraries/tritonus_mp3-0.3.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libraries/mp3spi-1.9.5-2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libraries/mp3spi1.9.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libraries/tritonus_share-0.3.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libraries/jid3lib-0.5.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
