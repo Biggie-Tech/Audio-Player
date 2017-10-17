@@ -88,25 +88,27 @@ public class FeatureFinder {
                 lyricsList = searchLyrics.searchLyrics(searchBean);
                 for (Lyrics l : lyricsList) {
                     lyrics = lyrics + l.getText();
-                    lyrics.replaceAll("advisory  the following lyrics contain explicit language:","");
+                    //lyrics.replaceAll("advisory  the following lyrics contain explicit language:","");
                 }
                 if (lyrics.equals("")) {
                     searchBean.setSites(Sites.AZLYRICS);
                     lyricsList = searchLyrics.searchLyrics(searchBean);
                     for (Lyrics l : lyricsList) {
                         lyrics = lyrics + l.getText();
-                        lyrics.replaceAll("advisory  the following lyrics contain explicit language:","");
+                        //lyrics.replaceAll("advisory  the following lyrics contain explicit language:","");
                     }
-                    if (lyrics.equals("")) {
+                    /*if (lyrics.equals("")) {
                         searchBean.setSites(Sites.SONGMEANINGS);
                         lyricsList = searchLyrics.searchLyrics(searchBean);
                         for (Lyrics l : lyricsList) {
                             lyrics = lyrics + l.getText();
                         }
-                    }
+                    }*/
                 }
             }
         } catch (SearchLyricsException e) {
+            System.out.println(artist);
+            System.out.println(title);
             e.printStackTrace();
         }
         cleanLyric(lyrics);
@@ -138,7 +140,7 @@ public class FeatureFinder {
         lyrics = lyrics.replaceAll("i m","im");
         lyrics = lyrics.replaceAll("i m","im");
         lyrics = lyrics.replaceAll("&amp","&");
-        lyrics.replaceAll("advisory  the following lyrics contain explicit language:","");
+        lyrics.replaceAll("Advisory - the following lyrics contain explicit language:","");
     }
 
     private void deAccent(String string) {

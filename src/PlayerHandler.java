@@ -1,4 +1,3 @@
-import javafx.scene.control.Alert;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
@@ -22,9 +21,9 @@ public class PlayerHandler {
     }
 
 
-    public String pauseOrResume() {
-        try{
-            if (isPlaying == true) {
+    public String pauseOrResume() throws NullPointerException{
+        if (player != null) {
+            if (isPlaying) {
                 player.pause();
                 isPlaying = false;
                 return "Paused";
@@ -34,10 +33,8 @@ public class PlayerHandler {
                 return "Playing";
             }
         }
-        catch (Exception ex){
-            ex.printStackTrace();
-            getDialogBox();
-            return "????";
+        else {
+            return "No Songs";
         }
     }
 
@@ -66,13 +63,6 @@ public class PlayerHandler {
         player = new MediaPlayer(media);
         player.play();
         isPlaying = true;
-    }
-
-    public void getDialogBox(){
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("ERROR!");
-        alert.setContentText("You Need To Add Songs First!");
-        alert.showAndWait();
     }
 
     public void seek(Double time) {

@@ -14,8 +14,10 @@ import javafx.stage.FileChooser;
 import javafx.util.Callback;
 import javafx.util.Duration;
 import org.farng.mp3.MP3File;
+import org.farng.mp3.TagException;
 
 import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -23,6 +25,8 @@ import java.util.ArrayList;
  * Created by D on 26/07/2017.
  */
 public class MainController {
+
+//terminoligy and base knowledge
 
 
     private Main parent;
@@ -32,6 +36,7 @@ public class MainController {
     private static Duration songDuration;
     private boolean isClickChanging = false;
     private boolean busy;
+    private volatile boolean shutdown = false;
     private Song song;
 
     //Button Controls
@@ -42,6 +47,7 @@ public class MainController {
     private Button buttonFindLyrics;
     private Button buttonClassifyLyrics;
     private Button buttonClassifyAudio;
+    private Button buttonCancelTask;
 
     //MenuBar Controls
     private MenuBar menuBar;
@@ -110,7 +116,7 @@ public class MainController {
     }
 
 
-    public void setGuiComponents() {
+    private void setGuiComponents() {
         //Assign Button Controls
         buttonPlay = (Button) parentScene.lookup("#buttonPlay");
         buttonNext = (Button) parentScene.lookup("#buttonNext");
@@ -119,6 +125,8 @@ public class MainController {
         buttonFindLyrics = (Button) parentScene.lookup("#buttonFindLyrics");
         buttonClassifyLyrics = (Button) parentScene.lookup("#buttonClassifyLyrics");
         buttonClassifyAudio = (Button) parentScene.lookup("#buttonClassifyAudio");
+        buttonCancelTask = (Button) parentScene.lookup("#buttonCancelTask");
+        buttonCancelTask.setVisible(false);
         labelTitle = (Label) parentScene.lookup("#labelTitle");
         labelTitle.setVisible(false);
         labelArtist = (Label) parentScene.lookup("#labelArtist");
@@ -159,40 +167,69 @@ public class MainController {
     private void setButtonEvents() {
 
         buttonPlay.setOnAction(e -> {
-            buttonPlay.setText(playerHandler.pauseOrResume());
+            try {
+                buttonPlay.setText(playerHandler.pauseOrResume());
+            } catch (NullPointerException ex) {
+                displayNoSongsError();
+                ex.printStackTrace();
+            }
         });
 
         buttonNext.setOnAction(e -> {
-            songIndex++;
-            if (songIndex > centreTable.getItems().size() - 1) songIndex = 0; {
-                centreTable.getSelectionModel().select(songIndex);
-                song = centreTable.getItems().get(songIndex);
-                playerHandler.play(song);
-                setCurrentTrackTime();
-                updateSongLabels(song);
-                displayAlbumArt(song);
-
+            if (checkSongListEmpty()) {
+                songIndex++;
+                if (songIndex > centreTable.getItems().size() - 1) songIndex = 0; {
+                    centreTable.getSelectionModel().select(songIndex);
+                    try {
+                        song = centreTable.getItems().get(songIndex);
+                    } catch (NullPointerException ex) {
+                        displayNoSongsError();
+                        ex.printStackTrace();
+                    }
+                    playerHandler.play(song);
+                    setCurrentTrackTime();
+                    updateSongLabels(song);
+                    displayAlbumArt();
+                }
+            }
+            else {
+                displayNoSongsError();
             }
         });
 
         buttonPrevious.setOnAction(e -> {
-            songIndex--;
-            if (songIndex < 0) songIndex = centreTable.getItems().size() - 1; {
-                centreTable.getSelectionModel().select(songIndex);
-                song = centreTable.getItems().get(songIndex);
-                playerHandler.play(song);
-                updateSongLabels(song);
-                setCurrentTrackTime();
-                displayAlbumArt(song);
+            if (checkSongListEmpty()) {
+                songIndex--;
+                if (songIndex < 0) songIndex = centreTable.getItems().size() - 1; {
+                    centreTable.getSelectionModel().select(songIndex);
+                    try {
+                        song = centreTable.getItems().get(songIndex);
+                    } catch (NullPointerException ex) {
+                        displayNoSongsError();
+                        ex.printStackTrace();
+                    }
+                    playerHandler.play(song);
+                    updateSongLabels(song);
+                    setCurrentTrackTime();
+                    displayAlbumArt();
+                }
+            }
+            else {
+                displayNoSongsError();
             }
         });
 
         buttonExtractAudioFeatures.setOnAction(actionEvent -> {
             if (!busy) {
-                //databaseHandler = DatabaseHandler.getInstance();
-                featureFinder = new FeatureFinder();
-                showProgress();
-                extractAudioFeaturesTask();
+                if (checkSongListEmpty()) {
+                    databaseHandler = DatabaseHandler.getInstance();
+                    featureFinder = new FeatureFinder();
+                    setTaskProgressVisibility(true);
+                    extractAudioFeaturesTask();
+                }
+                else {
+                    displayNoSongsError();
+                }
             } else {
                 displayBusyError();
             }
@@ -200,10 +237,15 @@ public class MainController {
 
         buttonFindLyrics.setOnAction(e -> {
             if (!busy) {
-                //databaseHandler = DatabaseHandler.getInstance();
-                featureFinder = new FeatureFinder();
-                showProgress();
-                findLyricsTask();
+                if (checkSongListEmpty()) {
+                    databaseHandler = DatabaseHandler.getInstance();
+                    featureFinder = new FeatureFinder();
+                    setTaskProgressVisibility(true);
+                    findLyricsTask();
+                }
+                else {
+                    displayNoSongsError();
+                }
             } else {
                 displayBusyError();
             }
@@ -211,10 +253,15 @@ public class MainController {
 
         buttonClassifyLyrics.setOnAction(e -> {
             if (!busy) {
-                classifierHandler = ClassifierHandler.getInstance();
-                //databaseHandler = DatabaseHandler.getInstance();
-                showProgress();
-                classifyLyricsTask();
+                if (checkSongListEmpty()) {
+                    classifierHandler = ClassifierHandler.getInstance();
+                    //databaseHandler = DatabaseHandler.getInstance();
+                    setTaskProgressVisibility(true);
+                    classifyLyricsTask();
+                }
+                else {
+                    displayNoSongsError();
+                }
             }else {
                 displayBusyError();
             }
@@ -222,13 +269,22 @@ public class MainController {
 
         buttonClassifyAudio.setOnAction(e -> {
             if (!busy) {
-                classifierHandler = ClassifierHandler.getInstance();
-                //databaseHandler = DatabaseHandler.getInstance();
-                showProgress();
-                classifyAudioTask();
+                if (checkSongListEmpty()) {
+                    classifierHandler = ClassifierHandler.getInstance();
+                    //databaseHandler = DatabaseHandler.getInstance();
+                    setTaskProgressVisibility(true);
+                    classifyAudioTask();
+                }
+                else {
+                    displayNoSongsError();
+                }
             }else {
                 displayBusyError();
             }
+        });
+
+        buttonCancelTask.setOnAction(event -> {
+            shutdown = true;
         });
     }
 
@@ -276,7 +332,7 @@ public class MainController {
 
         playlistNames.addAll("All Songs", "Angry Lyrics", "Angry Audio", "Calm Lyrics",
                 "Calm Audio", "Happy Lyrics", "Happy Audio", "Sad Lyrics", "Sad Audio");
-        playlists.addAll(playlistAngryLyrics, playlistCalmLyrics, playlistHappyLyrics, playlistSadLyrics,
+        playlists.addAll(mainSongList, playlistAngryLyrics, playlistCalmLyrics, playlistHappyLyrics, playlistSadLyrics,
                 playlistAngryAudio, playlistCalmAudio, playlistHappyAudio, playlistSadAudio);
     }
 
@@ -286,23 +342,30 @@ public class MainController {
             int i;
             @Override
             protected Object call() throws Exception {
-                    for (i = 0; i < centreTable.getItems().size(); i++) {
-                        Song s = centreTable.getItems().get(i);
-                        Platform.runLater(() -> {
-                            labelProgress.setText("Analysing: (" + (i + 1) + "/" + centreTable.getItems().size() + ")");
-                        });
-                        if (!databaseHandler.featureExists(s.getId(), "audio")) {
-                            ArrayList<Double> arrayList = featureFinder.extractAudioFeatures(new File(s.getPath()));
-                            databaseHandler.insertAudioFeature(s, arrayList);
-                        }
+                for (i = 0; i < centreTable.getItems().size(); i++) {
+
+                    if (shutdown) {
+                        System.out.println("AFE Cancelled");
+                        setTaskProgressVisibility(false);
+                        busy = false;
+                        break;
                     }
+                    Song s = centreTable.getItems().get(i);
+                    Platform.runLater(() -> {
+                        labelProgress.setText("Analysing: (" + (i + 1) + "/" + centreTable.getItems().size() + ")");
+                    });
+                    if (!databaseHandler.featureExists(s.getId(), "audio")) {
+                        ArrayList<Double> arrayList = featureFinder.extractAudioFeatures(new File(s.getPath()));
+                        databaseHandler.insertAudioFeature(s, arrayList);
+                    }
+                }
+                shutdown = false;
                 return null;
             }
         };
         progressIndicatorProgress.setProgress(task.getProgress());
         task.setOnSucceeded(event -> {
-            hideProgress();
-
+            setTaskProgressVisibility(false);
             busy = false;
         });
         new Thread(task).start();
@@ -316,6 +379,12 @@ public class MainController {
             protected Object call() throws Exception {
                 String lyrics;
                 for (i = 0; i < centreTable.getItems().size(); i++) {
+                    if (shutdown) {
+                        System.out.println("Find Lyrics Cancelled");
+                        setTaskProgressVisibility(false);
+                        busy = false;
+                        break;
+                    }
                     Song s = centreTable.getItems().get(i);
                     Platform.runLater(() -> {
                         labelProgress.setText("Searching: (" + (i+1) + "/" + centreTable.getItems().size() + ")");
@@ -327,13 +396,14 @@ public class MainController {
                         }
                     }
                 }
+                shutdown = false;
                 return null;
             }
         };
         progressIndicatorProgress.setProgress(task.getProgress());
         task.setOnSucceeded(event -> {
             busy = false;
-            hideProgress();
+            setTaskProgressVisibility(false);
         });
         new Thread(task).start();
     }
@@ -345,6 +415,12 @@ public class MainController {
             @Override
             protected Object call() throws Exception {
                 for (i = 0; i < centreTable.getItems().size(); i++) {
+                    if (shutdown) {
+                        System.out.println("Classify Lyrics Cancelled");
+                        setTaskProgressVisibility(false);
+                        busy = false;
+                        break;
+                    }
                     Song s = centreTable.getItems().get(i);
                     Platform.runLater(() -> {
                         labelProgress.setText("Classifying Lyrics: (" + (i+1) + "/" + centreTable.getItems().size() + ")");
@@ -362,13 +438,18 @@ public class MainController {
         };
         progressIndicatorProgress.setProgress(task.getProgress());
         task.setOnSucceeded(event -> {
-            busy = false;
-            hideProgress();
+            setTaskProgressVisibility(false);
             try {
                 centreTable.setItems(databaseHandler.getAllSongs());
                 buildEmotionPlaylists();
             } catch (SQLException e) {
                 e.printStackTrace();
+            }
+            finally {
+                busy = false;
+                shutdown = false;
+                buildEmotionPlaylists();
+                buildListViewPlaylists();
             }
         });
         new Thread(task).start();
@@ -381,6 +462,12 @@ public class MainController {
             @Override
             protected Object call() throws Exception {
                 for (i = 0; i < centreTable.getItems().size(); i++) {
+                    if (shutdown) {
+                        System.out.println("Classify Audio Cancelled");
+                        setTaskProgressVisibility(false);
+                        busy = false;
+                        break;
+                    }
                     Song s = centreTable.getItems().get(i);
                     Platform.runLater(() -> {
                         labelProgress.setText("Classifying Audio: (" + (i+1) + "/" + centreTable.getItems().size() + ")");
@@ -398,13 +485,18 @@ public class MainController {
         };
         progressIndicatorProgress.setProgress(task.getProgress());
         task.setOnSucceeded(event -> {
-            busy = false;
-            hideProgress();
+            setTaskProgressVisibility(false);
             try {
                 centreTable.setItems(databaseHandler.getAllSongs());
                 buildListViewPlaylists();
             } catch (SQLException e) {
                 e.printStackTrace();
+            }
+            finally {
+                busy = false;
+                shutdown = false;
+                buildEmotionPlaylists();
+                buildListViewPlaylists();
             }
         });
         new Thread(task).start();
@@ -413,20 +505,31 @@ public class MainController {
     private void setMenuBarEvents() {
         menuItemOpenFile.setOnAction(actionEvent -> {
             File file = selectFile();
-            song = new Song(file.getAbsolutePath());
-            if (playerHandler.getPlayer() == null) {
-                playerHandler.createPlayer(file);
+            try {
+                MP3File mp3 = new MP3File(file);
+                song = new Song(file.getAbsolutePath());
+                if (!checkDuplicateSong(song)) {
+                    playerHandler.play(song);
+                    fillSongInfo(mp3, song);
+                    mainSongList.add(song);
+                    songTime = playerHandler.getPlayer().getCurrentTime();
+                    songDuration = playerHandler.getPlayer().getTotalDuration();
+                    labelSongDuration.setText(formatSongTime(songTime, songDuration));
+                    setCurrentTrackTime();
+                    updateSongLabels(song);
+                    displayAlbumArt();
+                }
+                else {
+                    displayDuplicateError();
+                }
+            } catch (NullPointerException e) {
+                System.out.println("No mp3 file seleced");
+                e.printStackTrace();
+            } catch (TagException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            else {
-                playerHandler.getPlayer().dispose();
-                playerHandler.createPlayer(file);
-            }
-            centreTable.getItems().add(song);
-            songTime = playerHandler.getPlayer().getCurrentTime();
-            songDuration = playerHandler.getPlayer().getTotalDuration();
-            labelSongDuration.setText(formatTime(songTime, songDuration));
-            setCurrentTrackTime();
-            updateSongLabels(song);
         });
 
         //Menu/File/Open Folder Event
@@ -442,32 +545,42 @@ public class MainController {
             progressBarSong.setProgress(newValue.doubleValue() / 100);
             //if the slider is moved, the song will forward or reverse to that point
             if (sliderSongSeek.isValueChanging()) {
-                playerHandler.seek(sliderSongSeek.getValue());
+                seek();
             }
         });
         //set volume slider event
         sliderVolume.setMin(0);
         sliderVolume.setMax(1);
-        sliderVolume.setValue(0.5);
-        sliderVolume.valueProperty().addListener((observable, oldValue, newValue) -> {
-            if (playerHandler.getPlayer() == null) return;
-            playerHandler.getPlayer().setVolume(newValue.doubleValue());
-        });
+        sliderVolume.setValue(1);
+        try {
+            sliderVolume.valueProperty().addListener((observable, oldValue, newValue) -> {
+                if (playerHandler.getPlayer() == null) return;
+                playerHandler.getPlayer().setVolume(newValue.doubleValue());
+            });
+        } catch (NullPointerException e) {
+        }
 
         //sets the events for the seek bar so the song plays from where the slider is dragged/clicked
         sliderSongSeek.setOnMousePressed(event -> {
-            playerHandler.seek(sliderSongSeek.getValue());
+            seek();
         });
         sliderSongSeek.setOnMouseClicked(event -> {
-            playerHandler.seek(sliderSongSeek.getValue());
+            seek();
         });
         sliderSongSeek.setOnMouseDragged(event -> {
-            playerHandler.seek(sliderSongSeek.getValue());
+            seek();
         });
         sliderSongSeek.setOnMouseDragReleased(event -> {
-            playerHandler.seek(sliderSongSeek.getValue());
+            seek();
         });
+    }
 
+    //Private method so try/catch is written once
+    private void seek() {
+        try {
+            playerHandler.seek(sliderSongSeek.getValue());
+        } catch (NullPointerException e) {
+        }
     }
 
     private void buildCentreTable() {
@@ -520,7 +633,7 @@ public class MainController {
                     songIndex = row.getIndex();
                     setCurrentTrackTime();
                     updateSongLabels(row.getItem());
-                    displayAlbumArt(row.getItem());
+                    displayAlbumArt();
                 }
             });
             return row;
@@ -640,18 +753,18 @@ public class MainController {
         MP3File mp3File;
         if (f.isDirectory()) {
             for (File file : f.listFiles()) {
-                if (file.isFile() && file.getName().toLowerCase().endsWith(".mp3")) {
+                if (file.isDirectory()) {
+                    searchDirectory(file);
+                }
+                else if (file.isFile() && file.getName().toLowerCase().endsWith(".mp3")) {
                     try {
                         mp3File = new MP3File(file);
                         Song song = new Song(file.getCanonicalPath());
-                        song.setEmotionAudio("?");
-                        song.setEmotionLyric("?");
-                        song.setTitle(mp3File.getID3v2Tag().getSongTitle());
-                        song.setArtist(mp3File.getID3v2Tag().getLeadArtist());
-                        song.setAlbum(mp3File.getID3v2Tag().getAlbumTitle());
-                        databaseHandler.insertSong(song);
                         if (!checkDuplicateSong(song)) {
-                            centreTable.getItems().add(song);
+                            fillSongInfo(mp3File, song);
+                            //centreTable.getItems().add(song);
+                            mainSongList = databaseHandler.getAllSongs();
+                            centreTable.setItems(mainSongList);
                         }
                     }
                     catch (Exception e) {
@@ -662,8 +775,16 @@ public class MainController {
         }
     }
 
-    public boolean checkDuplicateSong(Song song) {
-        for (Song s : centreTable.getItems()) {
+    private void fillSongInfo(MP3File mp3, Song song) {
+        song.setEmotionAudio("?");
+        song.setEmotionLyric("?");
+        song.setTitle(mp3.getID3v2Tag().getSongTitle());
+        song.setArtist(mp3.getID3v2Tag().getLeadArtist());
+        song.setAlbum(mp3.getID3v2Tag().getAlbumTitle());
+        databaseHandler.insertSong(song);
+    }
+    private boolean checkDuplicateSong(Song song) {
+        for (Song s : mainSongList) {
             if (s.getPath().equals(song.getPath())) {
                 return true;
             }
@@ -684,7 +805,7 @@ public class MainController {
             Platform.runLater(() -> {
                 songTime = playerHandler.getPlayer().getCurrentTime();
                 songDuration = playerHandler.getPlayer().getTotalDuration();
-                labelSongDuration.setText(formatTime(songTime, songDuration));
+                labelSongDuration.setText(formatSongTime(songTime, songDuration));
                 if (!sliderSongSeek.isDisabled() &&
                         songDuration != null &&
                         songDuration.greaterThan(Duration.ZERO) &&
@@ -697,7 +818,7 @@ public class MainController {
 
     }
 
-    private  String formatTime(Duration elapsed, Duration duration) {
+    private  String formatSongTime(Duration elapsed, Duration duration) {
         int intElapsed = (int) Math.floor(elapsed.toSeconds());
         int elapsedHours = intElapsed / (60 * 60);
         if (elapsedHours > 0) {
@@ -751,12 +872,17 @@ public class MainController {
         labelAlbum.setVisible(true);
 
     }
-    private void displayAlbumArt(Song song) {
+    private void displayAlbumArt() {
         try {
             playerHandler.getPlayer().getMedia().getMetadata().addListener((MapChangeListener<? super String, ? super Object>) change -> {
                 if (change.wasAdded()) {
                     if (change.getKey().toString().equals("image")) {
-                        imageViewAlbumArt.setImage((Image)change.getValueAdded());
+                        if (change.getValueAdded() == null) {
+                            imageViewAlbumArt.setImage(null);
+                        }
+                        else {
+                            imageViewAlbumArt.setImage((Image)change.getValueAdded());
+                        }
                     }
                 }
             });
@@ -764,6 +890,14 @@ public class MainController {
         }
     }
 
+    private boolean checkSongListEmpty() {
+        if(centreTable.getItems().size() != 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
     private void displayBusyError() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("BUSY!");
@@ -771,12 +905,23 @@ public class MainController {
         alert.showAndWait();
     }
 
-    private void showProgress() {
-        labelProgress.setVisible(true);
-        progressIndicatorProgress.setVisible(true);
+    public void displayNoSongsError(){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("ERROR!");
+        alert.setContentText("You Need To Add Songs First!");
+        alert.showAndWait();
     }
-    private void hideProgress() {
-        labelProgress.setVisible(false);
-        progressIndicatorProgress.setVisible(false);
+
+    public void displayDuplicateError(){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("ERROR!");
+        alert.setContentText("This Song Already Exists!");
+        alert.showAndWait();
+    }
+
+    private void setTaskProgressVisibility(boolean b) {
+        labelProgress.setVisible(b);
+        progressIndicatorProgress.setVisible(b);
+        buttonCancelTask.setVisible(b);
     }
 }

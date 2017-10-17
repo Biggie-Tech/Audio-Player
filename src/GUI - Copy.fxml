@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
@@ -56,7 +57,8 @@
                         </Pane>
                         <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: dimgrey;" GridPane.columnIndex="2" GridPane.rowIndex="2">
                            <children>
-                              <ProgressIndicator id="progressIndicatorProgress" layoutX="287.0" layoutY="7.0" prefHeight="64.0" prefWidth="90.0" progress="0.0" style="-fx-background-color: dimgrey;" />
+                              <ProgressIndicator id="progressIndicatorProgress" layoutX="248.0" layoutY="7.0" prefHeight="64.0" prefWidth="90.0" progress="0.0" style="-fx-background-color: dimgrey;" />
+                              <Button id="buttonCancelTask" layoutX="357.0" layoutY="26.0" mnemonicParsing="false" style="-fx-background-color: Red;" text="Cancel" />
                            </children>
                         </Pane>
                         <Pane prefHeight="27.0" prefWidth="427.0" style="-fx-background-color: grey;" GridPane.columnIndex="1" />

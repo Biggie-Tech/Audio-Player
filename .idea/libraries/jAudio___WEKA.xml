@@ -3,9 +3,7 @@
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/libraries/jAudioGIT.jar!/" />
       <root url="jar://$PROJECT_DIR$/libraries/snowball-20051019.jar!/" />
-      <root url="jar://$PROJECT_DIR$/libraries/nlp-2015.3.30.jar!/" />
       <root url="jar://$PROJECT_DIR$/libraries/weka.jar!/" />
-      <root url="jar://$PROJECT_DIR$/libraries/stanford-parser-3.4.1.jar!/" />
       <root url="jar://$PROJECT_DIR$/libraries/SearchLyricsAPI1.0.jar!/" />
     </CLASSES>
     <JAVADOC />

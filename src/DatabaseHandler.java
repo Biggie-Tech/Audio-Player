@@ -14,7 +14,47 @@ public class DatabaseHandler {
     private static volatile DatabaseHandler instance;
     private static final String JDBC_DRIVER = "org.sqlite.JDBC";
     private static final String DB_URL = "jdbc:sqlite:Songs.db";
-    private final String AUDIO_FEATURE_NAMES = "audio_feature_1,audio_feature_2,audio_feature_3,audio_feature_4," +
+    private static final String CREATE_TABLE_SONG = "CREATE TABLE IF NOT EXISTS `song` (" +
+            "`id` INTEGER PRIMARY KEY AUTOINCREMENT," +
+            "`title` TEXT," +
+            "`artist` TEXT," +
+            "`album` TEXT," +
+            "`emotion_audio` TEXT," +
+            "`emotion_lyric` TEXT," +
+            "`physical_path` TEXT UNIQUE)";
+    private static final String CREATE_TABLE_PLAYLIST = "CREATE TABLE IF NOT EXISTS `playlist` (" +
+            "`id` INTEGER PRIMARY KEY AUTOINCREMENT," +
+            "`name` TEXT)";
+    private static final String CREATE_TABLE_SONGS_IN_PLAYLIST = "CREATE TABLE IF NOT EXISTS `songs_in_playlist` (" +
+            "`id` INTEGER PRIMARY KEY AUTOINCREMENT," +
+            "`songId` INTEGER," +
+            "`playlistId` INTEGER," +
+            "FOREIGN KEY(`songId`) REFERENCES song ( id )," +
+            "FOREIGN KEY(`playlistId`) REFERENCES playlist(id))";
+    private static final String CREATE_TABLE_LYRIC = "CREATE TABLE IF NOT EXISTS `lyric` (" +
+            "`id` INTEGER PRIMARY KEY AUTOINCREMENT," +
+            "`songId` INTEGER UNIQUE," +
+            "`lyric` TEXT," +
+            "`emotion` TEXT," +
+            "FOREIGN KEY(`songId`) REFERENCES song ( id ))";
+    private static final String CREATE_TABLE_AUDIO_FEATURE = "CREATE TABLE IF NOT EXISTS `audio_feature` (" +
+            "`id` INTEGER PRIMARY KEY AUTOINCREMENT," +
+            "`songId` INTEGER UNIQUE," +
+            "`audio_feature_1` REAL,`audio_feature_2` REAL,`audio_feature_3` REAL,`audio_feature_4` REAL,`audio_feature_5` REAL,`audio_feature_6` REAL," +
+            "`audio_feature_7` REAL,`audio_feature_8` REAL,`audio_feature_9` REAL,`audio_feature_10` REAL,`audio_feature_11` REAL,`audio_feature_12` REAL," +
+            "`audio_feature_13` REAL,`audio_feature_14` REAL,`audio_feature_15` REAL,`audio_feature_16` REAL,`audio_feature_17` REAL,`audio_feature_18` REAL," +
+            "`audio_feature_19` REAL,`audio_feature_20` REAL,`audio_feature_21` REAL,`audio_feature_22` REAL,`audio_feature_23` REAL,`audio_feature_24` REAL," +
+            "`audio_feature_25` REAL,`audio_feature_26` REAL,`audio_feature_27` REAL,`audio_feature_28` REAL,`audio_feature_29` REAL,`audio_feature_30` REAL," +
+            "`audio_feature_31` REAL,`audio_feature_32` REAL,`audio_feature_33` REAL,`audio_feature_34` REAL,`audio_feature_35` REAL,`audio_feature_36` REAL," +
+            "`audio_feature_37` REAL,`audio_feature_38` REAL,`audio_feature_39` REAL,`audio_feature_40` REAL,`audio_feature_41` REAL,`audio_feature_42` REAL," +
+            "`audio_feature_43` REAL,`audio_feature_44` REAL,`audio_feature_45` REAL,`audio_feature_46` REAL,`audio_feature_47` REAL,`audio_feature_48` REAL," +
+            "`audio_feature_49` REAL,`audio_feature_50` REAL,`audio_feature_51` REAL,`audio_feature_52` REAL,`audio_feature_53` REAL,`audio_feature_54` REAL," +
+            "`audio_feature_55` REAL,`audio_feature_56` REAL,`audio_feature_57` REAL,`audio_feature_58` REAL,`audio_feature_59` REAL,`audio_feature_60` REAL," +
+            "`audio_feature_61` REAL,`audio_feature_62` REAL,`audio_feature_63` REAL,`audio_feature_64` REAL,`audio_feature_65` REAL,`audio_feature_66` REAL," +
+            "`emotion` TEXT,\n" +
+            "FOREIGN KEY(`songId`) REFERENCES song ( id )\n" +
+            ")";
+    private static final String AUDIO_FEATURE_NAMES = "audio_feature_1,audio_feature_2,audio_feature_3,audio_feature_4," +
             "audio_feature_5,audio_feature_6,audio_feature_7,audio_feature_8," +
             "audio_feature_9,audio_feature_10,audio_feature_11,audio_feature_12," +
             "audio_feature_13,audio_feature_14,audio_feature_15,audio_feature_16," +
@@ -30,7 +70,8 @@ public class DatabaseHandler {
             "audio_feature_53,audio_feature_54,audio_feature_55,audio_feature_56," +
             "audio_feature_57,audio_feature_58,audio_feature_59,audio_feature_60," +
             "audio_feature_61,audio_feature_62,audio_feature_63,audio_feature_64," +
-            "audio_feature_65,audio_feature_66, audio_feature_67";
+            "audio_feature_65,audio_feature_66";
+    private static final String[] STATEMENTES = {CREATE_TABLE_SONG, CREATE_TABLE_PLAYLIST, CREATE_TABLE_SONGS_IN_PLAYLIST, CREATE_TABLE_LYRIC, CREATE_TABLE_AUDIO_FEATURE, };
     private Connection connection;
     //private Statement statement;
     private PreparedStatement preparedStatement;
@@ -40,6 +81,11 @@ public class DatabaseHandler {
 
     private DatabaseHandler() {
         //createConnection();
+        try {
+            buildDatabase();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public static DatabaseHandler getInstance() {
@@ -135,7 +181,7 @@ public class DatabaseHandler {
         try {
             createConnection();
             preparedStatement = connection.prepareStatement("INSERT OR IGNORE INTO audio_feature VALUES (null,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?," +
-                    "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                    "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
             preparedStatement.setInt(1, song.getId());
             preparedStatement.setDouble(2, audioFeatures.get(0));
             preparedStatement.setDouble(3, audioFeatures.get(1));
@@ -203,8 +249,7 @@ public class DatabaseHandler {
             preparedStatement.setDouble(65, audioFeatures.get(63));
             preparedStatement.setDouble(66, audioFeatures.get(64));
             preparedStatement.setDouble(67, audioFeatures.get(65));
-            preparedStatement.setDouble(68, audioFeatures.get(66));
-            preparedStatement.setString(69, "?");
+            preparedStatement.setString(68, "?");
             preparedStatement.setQueryTimeout(30);
             preparedStatement.execute();
         } catch (SQLException e) {
@@ -320,5 +365,14 @@ public class DatabaseHandler {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    private void buildDatabase() throws SQLException{
+        createConnection();
+        for (String s: STATEMENTES) {
+            preparedStatement = connection.prepareStatement(s);
+            preparedStatement.executeUpdate();
+        }
+        connection.close();
     }
 }

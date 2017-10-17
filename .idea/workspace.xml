@@ -27,36 +27,37 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MainController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MainController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="641" column="20" lean-forward="true" selection-start-line="641" selection-start-column="20" selection-end-line="641" selection-end-column="20" />
+            <state relative-caret-position="208">
+              <caret line="419" column="57" lean-forward="true" selection-start-line="419" selection-start-column="57" selection-end-line="419" selection-end-column="57" />
               <folding>
                 <element signature="method#setGuiComponents#0;class#MainController#0" expanded="false" />
+                <element signature="method#setButtonEvents#0;class#MainController#0" expanded="false" />
                 <element signature="method#buildEmotionPlaylists#0;class#MainController#0" expanded="false" />
                 <element signature="method#extractAudioFeaturesTask#0;class#MainController#0" expanded="false" />
                 <element signature="method#findLyricsTask#0;class#MainController#0" expanded="false" />
-                <element signature="method#classifyLyricsTask#0;class#MainController#0" expanded="false" />
                 <element signature="method#classifyAudioTask#0;class#MainController#0" expanded="false" />
                 <element signature="method#setMenuBarEvents#0;class#MainController#0" expanded="false" />
-                <element signature="method#setSliderEvents#0;class#MainController#0" expanded="false" />
-                <element signature="method#buildCentreTable#0;class#MainController#0" expanded="false" />
-                <element signature="method#buildListViewPlaylists#0;class#MainController#0" expanded="false" />
-                <element signature="method#displaySelectedPlaylist#0;class#MainController#0" expanded="false" />
-                <element signature="method#setEmotionColumnColour#0;class#MainController#0" expanded="false" />
-                <element signature="method#resetEmotionColumnColour#0;class#MainController#0" expanded="false" />
-                <element signature="method#selectFile#0;class#MainController#0" expanded="false" />
-                <element signature="method#selectDirectory#0;class#MainController#0" expanded="false" />
-                <element signature="method#checkDuplicateSong#0;class#MainController#0" expanded="false" />
-                <element signature="method#setCurrentTrackTime#0;class#MainController#0" expanded="false" />
-                <element signature="method#updateSliderSongValues#0;class#MainController#0" expanded="false" />
-                <element signature="method#formatTime#0;class#MainController#0" expanded="false" />
                 <element signature="method#updateSongLabels#0;class#MainController#0" expanded="false" />
                 <element signature="method#displayAlbumArt#0;class#MainController#0" expanded="false" />
-                <element signature="method#showProgress#0;class#MainController#0" expanded="false" />
-                <element signature="method#hideProgress#0;class#MainController#0" expanded="false" />
+                <element signature="method#checkSongListEmpty#0;class#MainController#0" expanded="false" />
+                <element signature="method#displayBusyError#0;class#MainController#0" expanded="false" />
+                <element signature="method#displayNoSongsError#0;class#MainController#0" expanded="false" />
+                <element signature="method#displayDuplicateError#0;class#MainController#0" expanded="false" />
+                <element signature="method#setTaskProgressVisibility#0;class#MainController#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PlayerHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/PlayerHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="32" column="33" lean-forward="true" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -64,18 +65,14 @@
       <file leaf-file-name="ClassifierHandler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ClassifierHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="293">
-              <caret line="77" column="5" lean-forward="true" selection-start-line="77" selection-start-column="5" selection-end-line="77" selection-end-column="5" />
+            <state relative-caret-position="357">
+              <caret line="135" column="31" lean-forward="true" selection-start-line="135" selection-start-column="31" selection-end-line="135" selection-end-column="31" />
               <folding>
                 <element signature="method#ClassifierHandler#0;class#ClassifierHandler#0" expanded="false" />
                 <element signature="method#getInstance#0;class#ClassifierHandler#0" expanded="false" />
+                <element signature="method#classifySongAudio#0;class#ClassifierHandler#0" expanded="false" />
                 <element signature="method#classifySongLyric#0;class#ClassifierHandler#0" expanded="false" />
-                <element signature="method#classifyLyric#0;class#ClassifierHandler#0" expanded="false" />
-                <element signature="method#buildLyricClassifier#0;class#ClassifierHandler#0" expanded="false" />
-                <element signature="method#buildFilter#0;class#ClassifierHandler#0" expanded="false" />
-                <element signature="method#saveModel#0;class#ClassifierHandler#0" expanded="false" />
-                <element signature="method#buildStopwords#0;class#ClassifierHandler#0" expanded="false" />
-                <element signature="method#buildTokenizer#0;class#ClassifierHandler#0" expanded="false" />
+                <element signature="method#classifyAudio#0;class#ClassifierHandler#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -84,40 +81,42 @@
       <file leaf-file-name="FeatureFinder.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/FeatureFinder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="68" column="57" lean-forward="false" selection-start-line="68" selection-start-column="57" selection-end-line="68" selection-end-column="57" />
+            <state relative-caret-position="289">
+              <caret line="32" column="56" lean-forward="true" selection-start-line="32" selection-start-column="56" selection-end-line="32" selection-end-column="56" />
               <folding>
                 <element signature="method#extractAudioFeatures#0;class#FeatureFinder#0" expanded="false" />
                 <element signature="method#createAudioFeatureExtractor#0;class#FeatureFinder#0" expanded="false" />
-                <element signature="method#findLyric#0;class#FeatureFinder#0" expanded="false" />
-                <element signature="method#cleanLyric#0;class#FeatureFinder#0" expanded="false" />
                 <element signature="method#deAccent#0;class#FeatureFinder#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DatabaseHandler.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DatabaseHandler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DatabaseHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="653">
-              <caret line="233" column="11" lean-forward="true" selection-start-line="233" selection-start-column="11" selection-end-line="233" selection-end-column="11" />
+            <state relative-caret-position="799">
+              <caret line="53" column="33" lean-forward="true" selection-start-line="53" selection-start-column="33" selection-end-line="53" selection-end-column="33" />
               <folding>
+                <element signature="method#DatabaseHandler#0;class#DatabaseHandler#0" expanded="false" />
+                <element signature="method#getInstance#0;class#DatabaseHandler#0" expanded="false" />
                 <element signature="method#updateLyricEmotion#0;class#DatabaseHandler#0" expanded="false" />
                 <element signature="method#updateAudioEmotion#0;class#DatabaseHandler#0" expanded="false" />
                 <element signature="method#getLyricInstance#0;class#DatabaseHandler#0" expanded="false" />
                 <element signature="method#getAudioInstance#0;class#DatabaseHandler#0" expanded="false" />
                 <element signature="method#insertLyrics#0;class#DatabaseHandler#0" expanded="false" />
                 <element signature="method#insertAudioFeature#0;class#DatabaseHandler#0" expanded="false" />
+                <element signature="method#insertSong#0;class#DatabaseHandler#0" expanded="false" />
                 <element signature="method#getAllSongs#0;class#DatabaseHandler#0" expanded="false" />
                 <element signature="method#checkInfo#0;class#DatabaseHandler#0" expanded="false" />
                 <element signature="method#featureExists#0;class#DatabaseHandler#0" expanded="false" />
-                <marker date="1504007685382" expanded="true" signature="2634:2680" ph="UPDATE song " />
-                <marker date="1504007685382" expanded="true" signature="3174:3220" ph="UPDATE song " />
-                <marker date="1504007685382" expanded="true" signature="5705:5917" ph="INSERT INTO audio_features... " />
-                <marker date="1504007685382" expanded="true" signature="11877:11895" ph="SELECT * FRO... song" />
-                <marker date="1504007685382" expanded="true" signature="13532:13585" ph="SELECT COUNT... audio_feature" />
-                <marker date="1504007685382" expanded="true" signature="13798:13843" ph="SELECT COUNT... lyric" />
+                <element signature="method#createConnection#0;class#DatabaseHandler#0" expanded="false" />
+                <element signature="method#buildDatabase#0;class#DatabaseHandler#0" expanded="false" />
+                <marker date="1505319562970" expanded="true" signature="6232:6278" ph="UPDATE song " />
+                <marker date="1505319562970" expanded="true" signature="6772:6818" ph="UPDATE song " />
+                <marker date="1505319562970" expanded="true" signature="15405:15423" ph="SELECT * FRO... song" />
+                <marker date="1505319562970" expanded="true" signature="17060:17113" ph="SELECT COUNT... audio_feature" />
+                <marker date="1505319562970" expanded="true" signature="17326:17371" ph="SELECT COUNT... lyric" />
               </folding>
             </state>
           </provider>
@@ -144,6 +143,7 @@
       <find>AudioPlaylist</find>
       <find>commit</find>
       <find>table</find>
+      <find>image</find>
     </findStrings>
   </component>
   <component name="GradleLocalSettings">
@@ -169,13 +169,14 @@
         <option value="$PROJECT_DIR$/src/SongFile.java" />
         <option value="$PROJECT_DIR$/src/Song.java" />
         <option value="$PROJECT_DIR$/src/PlayerController.java" />
-        <option value="$PROJECT_DIR$/src/FeatureFinder.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/DatabaseController.java" />
         <option value="$PROJECT_DIR$/src/ClassifierController.java" />
-        <option value="$PROJECT_DIR$/src/MainController.java" />
         <option value="$PROJECT_DIR$/src/GUI - Copy.fxml" />
         <option value="$PROJECT_DIR$/src/DatabaseHandler.java" />
+        <option value="$PROJECT_DIR$/src/FeatureFinder.java" />
+        <option value="$PROJECT_DIR$/src/PlayerHandler.java" />
+        <option value="$PROJECT_DIR$/src/MainController.java" />
       </list>
     </option>
   </component>
@@ -209,6 +210,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -247,15 +250,13 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Documents/MSc Project Backups/Project" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -587,43 +588,6 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
-      <method />
-    </configuration>
-    <configuration default="true" type="ScalaTestRunConfiguration" factoryName="ScalaTest">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <setting name="path" value="" />
-      <setting name="package" value="" />
-      <setting name="vmparams" value="" />
-      <setting name="params" value="" />
-      <setting name="workingDirectory" value="" />
-      <setting name="searchForTest" value="Across module dependencies" />
-      <setting name="testName" value="" />
-      <setting name="testKind" value="Class" />
-      <setting name="showProgressMessages" value="true" />
-      <classRegexps />
-      <testRegexps />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="Specs2RunConfiguration" factoryName="Specs2">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <setting name="path" value="" />
-      <setting name="package" value="" />
-      <setting name="vmparams" value="" />
-      <setting name="params" value="" />
-      <setting name="workingDirectory" value="" />
-      <setting name="searchForTest" value="Across module dependencies" />
-      <setting name="testName" value="" />
-      <setting name="testKind" value="Class" />
-      <setting name="showProgressMessages" value="true" />
-      <classRegexps />
-      <testRegexps />
-      <envs />
-      <method />
-    </configuration>
     <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -674,40 +638,10 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <working-directory />
-      <pass-parent-env>true</pass-parent-env>
-      <envs />
-      <ui />
-      <extra-mocha-options />
-      <test-kind>DIRECTORY</test-kind>
-      <test-directory />
-      <recursive>false</recursive>
-      <method />
-    </configuration>
     <configuration default="true" type="osgi.bnd.run" factoryName="Run Launcher">
       <method />
     </configuration>
     <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
-      <method />
-    </configuration>
-    <configuration default="true" type="uTestRunConfiguration" factoryName="utest">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <setting name="path" value="" />
-      <setting name="package" value="" />
-      <setting name="vmparams" value="" />
-      <setting name="params" value="" />
-      <setting name="workingDirectory" value="" />
-      <setting name="searchForTest" value="Across module dependencies" />
-      <setting name="testName" value="" />
-      <setting name="testKind" value="Class" />
-      <setting name="showProgressMessages" value="true" />
-      <classRegexps />
-      <testRegexps />
-      <envs />
       <method />
     </configuration>
     <list size="1">
@@ -746,11 +680,27 @@
       <workItem from="1503940960926" duration="15000" />
       <workItem from="1503945316506" duration="649000" />
       <workItem from="1503946775712" duration="5277000" />
+      <workItem from="1505158145003" duration="1197000" />
+      <workItem from="1505248561492" duration="1980000" />
+      <workItem from="1505307090444" duration="359000" />
+      <workItem from="1505307837302" duration="1233000" />
+      <workItem from="1505471971591" duration="1013000" />
+      <workItem from="1506077290927" duration="4455000" />
+      <workItem from="1506103855700" duration="911000" />
+      <workItem from="1506187748343" duration="644000" />
+      <workItem from="1506256668418" duration="594000" />
+      <workItem from="1506541708750" duration="7203000" />
+      <workItem from="1506598845175" duration="5204000" />
+      <workItem from="1506631110136" duration="1439000" />
+      <workItem from="1506671199862" duration="1447000" />
+      <workItem from="1506678937937" duration="1312000" />
+      <workItem from="1506717535050" duration="3277000" />
+      <workItem from="1506790496358" duration="959000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="379772000" />
+    <option name="totallyTimeSpent" value="412999000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -768,19 +718,18 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32976446" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3270925" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32976446" sideWeight="0.50319827" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31828195" sideWeight="0.4968017" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31497797" sideWeight="0.4968017" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20145631" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17475729" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -792,6 +741,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32378855" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32929516" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -805,7 +755,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="432" />
+      <option name="time" value="437" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -814,62 +764,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/MainController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3485">
-          <caret line="291" column="5" lean-forward="false" selection-start-line="291" selection-start-column="5" selection-end-line="291" selection-end-column="5" />
-          <folding>
-            <element signature="method#setGuiComponents#0;class#MainController#0" expanded="false" />
-            <element signature="method#buildEmotionPlaylists#0;class#MainController#0" expanded="false" />
-            <element signature="method#extractAudioFeaturesTask#0;class#MainController#0" expanded="false" />
-            <element signature="method#findLyricsTask#0;class#MainController#0" expanded="false" />
-            <element signature="method#classifyLyricsTask#0;class#MainController#0" expanded="false" />
-            <element signature="method#classifyAudioTask#0;class#MainController#0" expanded="false" />
-            <element signature="method#setMenuBarEvents#0;class#MainController#0" expanded="false" />
-            <element signature="method#setSliderEvents#0;class#MainController#0" expanded="false" />
-            <element signature="method#buildCentreTable#0;class#MainController#0" expanded="false" />
-            <element signature="method#buildListViewPlaylists#0;class#MainController#0" expanded="false" />
-            <element signature="method#displaySelectedPlaylist#0;class#MainController#0" expanded="false" />
-            <element signature="method#setEmotionColumnColour#0;class#MainController#0" expanded="false" />
-            <element signature="method#resetEmotionColumnColour#0;class#MainController#0" expanded="false" />
-            <element signature="method#selectFile#0;class#MainController#0" expanded="false" />
-            <element signature="method#selectDirectory#0;class#MainController#0" expanded="false" />
-            <element signature="method#checkDuplicateSong#0;class#MainController#0" expanded="false" />
-            <element signature="method#setCurrentTrackTime#0;class#MainController#0" expanded="false" />
-            <element signature="method#updateSliderSongValues#0;class#MainController#0" expanded="false" />
-            <element signature="method#formatTime#0;class#MainController#0" expanded="false" />
-            <element signature="method#updateSongLabels#0;class#MainController#0" expanded="false" />
-            <element signature="method#displayAlbumArt#0;class#MainController#0" expanded="false" />
-            <element signature="method#showProgress#0;class#MainController#0" expanded="false" />
-            <element signature="method#hideProgress#0;class#MainController#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DatabaseHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="1" lean-forward="false" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
-          <folding>
-            <element signature="method#updateLyricEmotion#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="method#updateAudioEmotion#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="method#getLyricInstance#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="method#getAudioInstance#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="method#insertLyrics#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="method#insertAudioFeature#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="method#getAllSongs#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="method#checkInfo#0;class#DatabaseHandler#0" expanded="false" />
-            <element signature="method#featureExists#0;class#DatabaseHandler#0" expanded="false" />
-            <marker date="1504007685382" expanded="true" signature="2634:2680" ph="UPDATE song " />
-            <marker date="1504007685382" expanded="true" signature="3174:3220" ph="UPDATE song " />
-            <marker date="1504007685382" expanded="true" signature="5705:5917" ph="INSERT INTO audio_features... " />
-            <marker date="1504007685382" expanded="true" signature="11877:11895" ph="SELECT * FRO... song" />
-            <marker date="1504007685382" expanded="true" signature="13532:13585" ph="SELECT COUNT... audio_feature" />
-            <marker date="1504007685382" expanded="true" signature="13798:13843" ph="SELECT COUNT... lyric" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/FeatureFinder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -890,28 +784,19 @@
           <caret line="291" column="5" lean-forward="false" selection-start-line="291" selection-start-column="5" selection-end-line="291" selection-end-column="5" />
           <folding>
             <element signature="method#setGuiComponents#0;class#MainController#0" expanded="false" />
+            <element signature="method#setButtonEvents#0;class#MainController#0" expanded="false" />
             <element signature="method#buildEmotionPlaylists#0;class#MainController#0" expanded="false" />
             <element signature="method#extractAudioFeaturesTask#0;class#MainController#0" expanded="false" />
             <element signature="method#findLyricsTask#0;class#MainController#0" expanded="false" />
-            <element signature="method#classifyLyricsTask#0;class#MainController#0" expanded="false" />
             <element signature="method#classifyAudioTask#0;class#MainController#0" expanded="false" />
             <element signature="method#setMenuBarEvents#0;class#MainController#0" expanded="false" />
-            <element signature="method#setSliderEvents#0;class#MainController#0" expanded="false" />
-            <element signature="method#buildCentreTable#0;class#MainController#0" expanded="false" />
-            <element signature="method#buildListViewPlaylists#0;class#MainController#0" expanded="false" />
-            <element signature="method#displaySelectedPlaylist#0;class#MainController#0" expanded="false" />
-            <element signature="method#setEmotionColumnColour#0;class#MainController#0" expanded="false" />
-            <element signature="method#resetEmotionColumnColour#0;class#MainController#0" expanded="false" />
-            <element signature="method#selectFile#0;class#MainController#0" expanded="false" />
-            <element signature="method#selectDirectory#0;class#MainController#0" expanded="false" />
-            <element signature="method#checkDuplicateSong#0;class#MainController#0" expanded="false" />
-            <element signature="method#setCurrentTrackTime#0;class#MainController#0" expanded="false" />
-            <element signature="method#updateSliderSongValues#0;class#MainController#0" expanded="false" />
-            <element signature="method#formatTime#0;class#MainController#0" expanded="false" />
             <element signature="method#updateSongLabels#0;class#MainController#0" expanded="false" />
             <element signature="method#displayAlbumArt#0;class#MainController#0" expanded="false" />
-            <element signature="method#showProgress#0;class#MainController#0" expanded="false" />
-            <element signature="method#hideProgress#0;class#MainController#0" expanded="false" />
+            <element signature="method#checkSongListEmpty#0;class#MainController#0" expanded="false" />
+            <element signature="method#displayBusyError#0;class#MainController#0" expanded="false" />
+            <element signature="method#displayNoSongsError#0;class#MainController#0" expanded="false" />
+            <element signature="method#displayDuplicateError#0;class#MainController#0" expanded="false" />
+            <element signature="method#setTaskProgressVisibility#0;class#MainController#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -921,21 +806,25 @@
         <state relative-caret-position="136">
           <caret line="8" column="1" lean-forward="false" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
           <folding>
+            <element signature="method#DatabaseHandler#0;class#DatabaseHandler#0" expanded="false" />
+            <element signature="method#getInstance#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#updateLyricEmotion#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#updateAudioEmotion#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#getLyricInstance#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#getAudioInstance#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#insertLyrics#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#insertAudioFeature#0;class#DatabaseHandler#0" expanded="false" />
+            <element signature="method#insertSong#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#getAllSongs#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#checkInfo#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#featureExists#0;class#DatabaseHandler#0" expanded="false" />
-            <marker date="1504007685382" expanded="true" signature="2634:2680" ph="UPDATE song " />
-            <marker date="1504007685382" expanded="true" signature="3174:3220" ph="UPDATE song " />
-            <marker date="1504007685382" expanded="true" signature="5705:5917" ph="INSERT INTO audio_features... " />
-            <marker date="1504007685382" expanded="true" signature="11877:11895" ph="SELECT * FRO... song" />
-            <marker date="1504007685382" expanded="true" signature="13532:13585" ph="SELECT COUNT... audio_feature" />
-            <marker date="1504007685382" expanded="true" signature="13798:13843" ph="SELECT COUNT... lyric" />
+            <element signature="method#createConnection#0;class#DatabaseHandler#0" expanded="false" />
+            <element signature="method#buildDatabase#0;class#DatabaseHandler#0" expanded="false" />
+            <marker date="1505319562970" expanded="true" signature="6232:6278" ph="UPDATE song " />
+            <marker date="1505319562970" expanded="true" signature="6772:6818" ph="UPDATE song " />
+            <marker date="1505319562970" expanded="true" signature="15405:15423" ph="SELECT * FRO... song" />
+            <marker date="1505319562970" expanded="true" signature="17060:17113" ph="SELECT COUNT... audio_feature" />
+            <marker date="1505319562970" expanded="true" signature="17326:17371" ph="SELECT COUNT... lyric" />
           </folding>
         </state>
       </provider>
@@ -960,28 +849,19 @@
           <caret line="291" column="5" lean-forward="false" selection-start-line="291" selection-start-column="5" selection-end-line="291" selection-end-column="5" />
           <folding>
             <element signature="method#setGuiComponents#0;class#MainController#0" expanded="false" />
+            <element signature="method#setButtonEvents#0;class#MainController#0" expanded="false" />
             <element signature="method#buildEmotionPlaylists#0;class#MainController#0" expanded="false" />
             <element signature="method#extractAudioFeaturesTask#0;class#MainController#0" expanded="false" />
             <element signature="method#findLyricsTask#0;class#MainController#0" expanded="false" />
-            <element signature="method#classifyLyricsTask#0;class#MainController#0" expanded="false" />
             <element signature="method#classifyAudioTask#0;class#MainController#0" expanded="false" />
             <element signature="method#setMenuBarEvents#0;class#MainController#0" expanded="false" />
-            <element signature="method#setSliderEvents#0;class#MainController#0" expanded="false" />
-            <element signature="method#buildCentreTable#0;class#MainController#0" expanded="false" />
-            <element signature="method#buildListViewPlaylists#0;class#MainController#0" expanded="false" />
-            <element signature="method#displaySelectedPlaylist#0;class#MainController#0" expanded="false" />
-            <element signature="method#setEmotionColumnColour#0;class#MainController#0" expanded="false" />
-            <element signature="method#resetEmotionColumnColour#0;class#MainController#0" expanded="false" />
-            <element signature="method#selectFile#0;class#MainController#0" expanded="false" />
-            <element signature="method#selectDirectory#0;class#MainController#0" expanded="false" />
-            <element signature="method#checkDuplicateSong#0;class#MainController#0" expanded="false" />
-            <element signature="method#setCurrentTrackTime#0;class#MainController#0" expanded="false" />
-            <element signature="method#updateSliderSongValues#0;class#MainController#0" expanded="false" />
-            <element signature="method#formatTime#0;class#MainController#0" expanded="false" />
             <element signature="method#updateSongLabels#0;class#MainController#0" expanded="false" />
             <element signature="method#displayAlbumArt#0;class#MainController#0" expanded="false" />
-            <element signature="method#showProgress#0;class#MainController#0" expanded="false" />
-            <element signature="method#hideProgress#0;class#MainController#0" expanded="false" />
+            <element signature="method#checkSongListEmpty#0;class#MainController#0" expanded="false" />
+            <element signature="method#displayBusyError#0;class#MainController#0" expanded="false" />
+            <element signature="method#displayNoSongsError#0;class#MainController#0" expanded="false" />
+            <element signature="method#displayDuplicateError#0;class#MainController#0" expanded="false" />
+            <element signature="method#setTaskProgressVisibility#0;class#MainController#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -991,21 +871,25 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="method#DatabaseHandler#0;class#DatabaseHandler#0" expanded="false" />
+            <element signature="method#getInstance#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#updateLyricEmotion#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#updateAudioEmotion#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#getLyricInstance#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#getAudioInstance#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#insertLyrics#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#insertAudioFeature#0;class#DatabaseHandler#0" expanded="false" />
+            <element signature="method#insertSong#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#getAllSongs#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#checkInfo#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#featureExists#0;class#DatabaseHandler#0" expanded="false" />
-            <marker date="1504007685382" expanded="true" signature="2634:2680" ph="UPDATE song " />
-            <marker date="1504007685382" expanded="true" signature="3174:3220" ph="UPDATE song " />
-            <marker date="1504007685382" expanded="true" signature="5705:5917" ph="INSERT INTO audio_features... " />
-            <marker date="1504007685382" expanded="true" signature="11877:11895" ph="SELECT * FRO... song" />
-            <marker date="1504007685382" expanded="true" signature="13532:13585" ph="SELECT COUNT... audio_feature" />
-            <marker date="1504007685382" expanded="true" signature="13798:13843" ph="SELECT COUNT... lyric" />
+            <element signature="method#createConnection#0;class#DatabaseHandler#0" expanded="false" />
+            <element signature="method#buildDatabase#0;class#DatabaseHandler#0" expanded="false" />
+            <marker date="1505319562970" expanded="true" signature="6232:6278" ph="UPDATE song " />
+            <marker date="1505319562970" expanded="true" signature="6772:6818" ph="UPDATE song " />
+            <marker date="1505319562970" expanded="true" signature="15405:15423" ph="SELECT * FRO... song" />
+            <marker date="1505319562970" expanded="true" signature="17060:17113" ph="SELECT COUNT... audio_feature" />
+            <marker date="1505319562970" expanded="true" signature="17326:17371" ph="SELECT COUNT... lyric" />
           </folding>
         </state>
       </provider>
@@ -1073,36 +957,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TaggerDemo.java" />
-    <entry file="jar://$PROJECT_DIR$/libraries/nlp-2015.3.30.jar!/weka/core/tokenizers/WhiteSpaceTokenizer.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/libraries/nlp-2015.3.30.jar!/weka/core/tokenizers/PTBTokenizer.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-56">
-          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/libraries/nlp-2015.3.30.jar!/weka/filters/unsupervised/attribute/PartOfSpeechTagging.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-153">
-          <caret line="41" column="13" lean-forward="false" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$PROJECT_DIR$/libraries/nlp-2015.3.30.jar!/weka/core/tokenizers/WhiteSpaceTokenizer.class" />
+    <entry file="jar://$PROJECT_DIR$/libraries/nlp-2015.3.30.jar!/weka/core/tokenizers/PTBTokenizer.class" />
+    <entry file="jar://$PROJECT_DIR$/libraries/nlp-2015.3.30.jar!/weka/filters/unsupervised/attribute/PartOfSpeechTagging.class" />
     <entry file="file://$PROJECT_DIR$/PartOfSpeechTagging.java" />
     <entry file="file://$PROJECT_DIR$/src/DatabaseLyrics.java" />
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/3e32f7f2-0c2e-4ffd-9084-29ab6878a3d2/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/3e32f7f2-0c2e-4ffd-9084-29ab6878a3d2/console.sql" />
     <entry file="file://$PROJECT_DIR$/src/AudioPlaylist.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/net/URLClassLoader.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1134,16 +994,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI.fxml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI.fxml" />
     <entry file="file://$PROJECT_DIR$/src/NaturalLanguageProcessingController.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/javafx-src.zip!/javafx/concurrent/Task.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1187,13 +1038,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Song.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="640">
-          <caret line="69" column="0" lean-forward="true" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -1201,107 +1045,190 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PlayerHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="63" column="40" lean-forward="false" selection-start-line="63" selection-start-column="40" selection-end-line="63" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/GUI - Copy.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="26" lean-forward="false" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ClassifierHandler.java">
+    <entry file="file://$PROJECT_DIR$/src/Song.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="77" column="5" lean-forward="true" selection-start-line="77" selection-start-column="5" selection-end-line="77" selection-end-column="5" />
-          <folding>
-            <element signature="method#ClassifierHandler#0;class#ClassifierHandler#0" expanded="false" />
-            <element signature="method#getInstance#0;class#ClassifierHandler#0" expanded="false" />
-            <element signature="method#classifySongLyric#0;class#ClassifierHandler#0" expanded="false" />
-            <element signature="method#classifyLyric#0;class#ClassifierHandler#0" expanded="false" />
-            <element signature="method#buildLyricClassifier#0;class#ClassifierHandler#0" expanded="false" />
-            <element signature="method#buildFilter#0;class#ClassifierHandler#0" expanded="false" />
-            <element signature="method#saveModel#0;class#ClassifierHandler#0" expanded="false" />
-            <element signature="method#buildStopwords#0;class#ClassifierHandler#0" expanded="false" />
-            <element signature="method#buildTokenizer#0;class#ClassifierHandler#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="618">
+          <caret line="69" column="0" lean-forward="true" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/FeatureFinder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="68" column="57" lean-forward="false" selection-start-line="68" selection-start-column="57" selection-end-line="68" selection-end-column="57" />
-          <folding>
-            <element signature="method#extractAudioFeatures#0;class#FeatureFinder#0" expanded="false" />
-            <element signature="method#createAudioFeatureExtractor#0;class#FeatureFinder#0" expanded="false" />
-            <element signature="method#findLyric#0;class#FeatureFinder#0" expanded="false" />
-            <element signature="method#cleanLyric#0;class#FeatureFinder#0" expanded="false" />
-            <element signature="method#deAccent#0;class#FeatureFinder#0" expanded="false" />
-          </folding>
+    <entry file="uml://JAVA/ClassifierHandler">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>ClassifierHandler</OriginalElement>
+          <nodes>
+            <node x="" y="">Song</node>
+            <node x="" y="">PlayerHandler</node>
+            <node x="" y="">FeatureFinder</node>
+            <node x="" y="">DatabaseHandler</node>
+            <node x="" y="">MainController</node>
+            <node x="" y="">Main</node>
+            <node x="" y="">ClassifierHandler</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="0.8" x="878.0" y="1043.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Constructors</Category>
+            <Category>Methods</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MainController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="641" column="20" lean-forward="true" selection-start-line="641" selection-start-column="20" selection-end-line="641" selection-end-column="20" />
-          <folding>
-            <element signature="method#setGuiComponents#0;class#MainController#0" expanded="false" />
-            <element signature="method#buildEmotionPlaylists#0;class#MainController#0" expanded="false" />
-            <element signature="method#extractAudioFeaturesTask#0;class#MainController#0" expanded="false" />
-            <element signature="method#findLyricsTask#0;class#MainController#0" expanded="false" />
-            <element signature="method#classifyLyricsTask#0;class#MainController#0" expanded="false" />
-            <element signature="method#classifyAudioTask#0;class#MainController#0" expanded="false" />
-            <element signature="method#setMenuBarEvents#0;class#MainController#0" expanded="false" />
-            <element signature="method#setSliderEvents#0;class#MainController#0" expanded="false" />
-            <element signature="method#buildCentreTable#0;class#MainController#0" expanded="false" />
-            <element signature="method#buildListViewPlaylists#0;class#MainController#0" expanded="false" />
-            <element signature="method#displaySelectedPlaylist#0;class#MainController#0" expanded="false" />
-            <element signature="method#setEmotionColumnColour#0;class#MainController#0" expanded="false" />
-            <element signature="method#resetEmotionColumnColour#0;class#MainController#0" expanded="false" />
-            <element signature="method#selectFile#0;class#MainController#0" expanded="false" />
-            <element signature="method#selectDirectory#0;class#MainController#0" expanded="false" />
-            <element signature="method#checkDuplicateSong#0;class#MainController#0" expanded="false" />
-            <element signature="method#setCurrentTrackTime#0;class#MainController#0" expanded="false" />
-            <element signature="method#updateSliderSongValues#0;class#MainController#0" expanded="false" />
-            <element signature="method#formatTime#0;class#MainController#0" expanded="false" />
-            <element signature="method#updateSongLabels#0;class#MainController#0" expanded="false" />
-            <element signature="method#displayAlbumArt#0;class#MainController#0" expanded="false" />
-            <element signature="method#showProgress#0;class#MainController#0" expanded="false" />
-            <element signature="method#hideProgress#0;class#MainController#0" expanded="false" />
-          </folding>
+    <entry file="uml://JAVA/">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement />
+          <nodes>
+            <node x="" y="">com</node>
+            <node x="" y="">jAudioFE</node>
+            <node x="" y="">JAudioServer.JAudioServerThread</node>
+            <node x="" y="">netscape</node>
+            <node x="" y="">PlayerHandler</node>
+            <node x="" y="">JAudioServer</node>
+            <node x="" y="">codecLib</node>
+            <node x="" y="">JAudioPy4J</node>
+            <node x="" y="">JAudioCommandLine</node>
+            <node x="" y="">sun</node>
+            <node x="" y="">ClassifierHandler</node>
+            <node x="" y="">jAudioFeatureExtractor</node>
+            <node x="" y="">javazoom</node>
+            <node x="" y="">hep</node>
+            <node x="" y="">Song</node>
+            <node x="" y="">java</node>
+            <node x="" y="">weka</node>
+            <node x="" y="">javax</node>
+            <node x="" y="">JAudioFile</node>
+            <node x="" y="">DatabaseHandler</node>
+            <node x="" y="">MainController</node>
+            <node x="" y="">javafx</node>
+            <node x="" y="">junit</node>
+            <node x="" y="">oracle</node>
+            <node x="" y="">test</node>
+            <node x="" y="">org</node>
+            <node x="" y="">junit3.8.2</node>
+            <node x="" y="">LocaleSenstiiveHash</node>
+            <node x="" y="">META-INF</node>
+            <node x="" y="">jdk</node>
+            <node x="" y="">cern</node>
+            <node x="" y="">corejava</node>
+            <node x="" y="">FeatureFinder</node>
+            <node x="" y="">java_cup</node>
+            <node x="" y="">Main</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="0.6313230305314739" x="1264.0" y="617.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Inner Classes</Category>
+            <Category>Constructors</Category>
+            <Category>Properties</Category>
+            <Category>Methods</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DatabaseHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="653">
-          <caret line="233" column="11" lean-forward="true" selection-start-line="233" selection-start-column="11" selection-end-line="233" selection-end-column="11" />
+        <state relative-caret-position="799">
+          <caret line="53" column="33" lean-forward="true" selection-start-line="53" selection-start-column="33" selection-end-line="53" selection-end-column="33" />
           <folding>
+            <element signature="method#DatabaseHandler#0;class#DatabaseHandler#0" expanded="false" />
+            <element signature="method#getInstance#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#updateLyricEmotion#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#updateAudioEmotion#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#getLyricInstance#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#getAudioInstance#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#insertLyrics#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#insertAudioFeature#0;class#DatabaseHandler#0" expanded="false" />
+            <element signature="method#insertSong#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#getAllSongs#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#checkInfo#0;class#DatabaseHandler#0" expanded="false" />
             <element signature="method#featureExists#0;class#DatabaseHandler#0" expanded="false" />
-            <marker date="1504007685382" expanded="true" signature="2634:2680" ph="UPDATE song " />
-            <marker date="1504007685382" expanded="true" signature="3174:3220" ph="UPDATE song " />
-            <marker date="1504007685382" expanded="true" signature="5705:5917" ph="INSERT INTO audio_features... " />
-            <marker date="1504007685382" expanded="true" signature="11877:11895" ph="SELECT * FRO... song" />
-            <marker date="1504007685382" expanded="true" signature="13532:13585" ph="SELECT COUNT... audio_feature" />
-            <marker date="1504007685382" expanded="true" signature="13798:13843" ph="SELECT COUNT... lyric" />
+            <element signature="method#createConnection#0;class#DatabaseHandler#0" expanded="false" />
+            <element signature="method#buildDatabase#0;class#DatabaseHandler#0" expanded="false" />
+            <marker date="1505319562970" expanded="true" signature="6232:6278" ph="UPDATE song " />
+            <marker date="1505319562970" expanded="true" signature="6772:6818" ph="UPDATE song " />
+            <marker date="1505319562970" expanded="true" signature="15405:15423" ph="SELECT * FRO... song" />
+            <marker date="1505319562970" expanded="true" signature="17060:17113" ph="SELECT COUNT... audio_feature" />
+            <marker date="1505319562970" expanded="true" signature="17326:17371" ph="SELECT COUNT... lyric" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FeatureFinder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="32" column="56" lean-forward="true" selection-start-line="32" selection-start-column="56" selection-end-line="32" selection-end-column="56" />
+          <folding>
+            <element signature="method#extractAudioFeatures#0;class#FeatureFinder#0" expanded="false" />
+            <element signature="method#createAudioFeatureExtractor#0;class#FeatureFinder#0" expanded="false" />
+            <element signature="method#deAccent#0;class#FeatureFinder#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PlayerHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="32" column="33" lean-forward="true" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ClassifierHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="135" column="31" lean-forward="true" selection-start-line="135" selection-start-column="31" selection-end-line="135" selection-end-column="31" />
+          <folding>
+            <element signature="method#ClassifierHandler#0;class#ClassifierHandler#0" expanded="false" />
+            <element signature="method#getInstance#0;class#ClassifierHandler#0" expanded="false" />
+            <element signature="method#classifySongAudio#0;class#ClassifierHandler#0" expanded="false" />
+            <element signature="method#classifySongLyric#0;class#ClassifierHandler#0" expanded="false" />
+            <element signature="method#classifyAudio#0;class#ClassifierHandler#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MainController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="419" column="57" lean-forward="true" selection-start-line="419" selection-start-column="57" selection-end-line="419" selection-end-column="57" />
+          <folding>
+            <element signature="method#setGuiComponents#0;class#MainController#0" expanded="false" />
+            <element signature="method#setButtonEvents#0;class#MainController#0" expanded="false" />
+            <element signature="method#buildEmotionPlaylists#0;class#MainController#0" expanded="false" />
+            <element signature="method#extractAudioFeaturesTask#0;class#MainController#0" expanded="false" />
+            <element signature="method#findLyricsTask#0;class#MainController#0" expanded="false" />
+            <element signature="method#classifyAudioTask#0;class#MainController#0" expanded="false" />
+            <element signature="method#setMenuBarEvents#0;class#MainController#0" expanded="false" />
+            <element signature="method#updateSongLabels#0;class#MainController#0" expanded="false" />
+            <element signature="method#displayAlbumArt#0;class#MainController#0" expanded="false" />
+            <element signature="method#checkSongListEmpty#0;class#MainController#0" expanded="false" />
+            <element signature="method#displayBusyError#0;class#MainController#0" expanded="false" />
+            <element signature="method#displayNoSongsError#0;class#MainController#0" expanded="false" />
+            <element signature="method#displayDuplicateError#0;class#MainController#0" expanded="false" />
+            <element signature="method#setTaskProgressVisibility#0;class#MainController#0" expanded="false" />
           </folding>
         </state>
       </provider>
